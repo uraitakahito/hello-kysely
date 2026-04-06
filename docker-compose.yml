@@ -25,7 +25,6 @@ services:
         TZ: ${TZ:-Asia/Tokyo}
     volumes:
       - .:/app
-      - /app/node_modules
       - zsh-history:/zsh-volume
       - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
     environment:

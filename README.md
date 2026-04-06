@@ -6,8 +6,6 @@ Kysely + PostgreSQL で TODO リストの CRUD 操作を学ぶチュートリア
 
 ### Development
 
-セットアップスクリプトを実行して、必要なファイルのダウンロードと `.env` の生成を行います:
-
 ```bash
 ./setup.sh
 ```

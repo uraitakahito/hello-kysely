@@ -5,3 +5,4 @@ node_modules
 __snapshots__
 docker-entrypoint.sh
 Dockerfile.dev
+.env

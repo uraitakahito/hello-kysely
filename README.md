@@ -6,20 +6,16 @@ Kysely + PostgreSQL で TODO リストの CRUD 操作を学ぶチュートリア
 
 ### Development
 
-Please download the required files by following these steps:
-
-```
-curl -L -O https://raw.githubusercontent.com/uraitakahito/hello-javascript/refs/tags/1.2.0/Dockerfile.dev
-curl -L -O https://raw.githubusercontent.com/uraitakahito/hello-javascript/refs/tags/1.2.0/docker-entrypoint.sh
-chmod 755 docker-entrypoint.sh
-```
-
-Detailed environment setup instructions are described at the beginning of the [Dockerfile.dev](https://github.com/uraitakahito/hello-javascript/blob/1.2.0/Dockerfile.dev).
-
-### PostgreSQL の起動
+セットアップスクリプトを実行して、必要なファイルのダウンロードと `.env` の生成を行います:
 
 ```bash
-docker compose up -d postgres
+./setup.sh
+```
+
+### サービスの起動
+
+```bash
+docker compose up -d
 ```
 
 ### 依存パッケージのインストールとビルド

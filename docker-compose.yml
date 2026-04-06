@@ -2,15 +2,15 @@ services:
   postgres:
     image: postgres:17
     environment:
-      POSTGRES_USER: tutorial
-      POSTGRES_PASSWORD: tutorial
-      POSTGRES_DB: hello_kysely
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tutorial -d hello_kysely"]
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER} -d ${DATABASE_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -19,15 +19,23 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+      args:
+        user_id: ${USER_ID}
+        group_id: ${GROUP_ID}
+        TZ: ${TZ:-Asia/Tokyo}
     volumes:
       - .:/app
       - /app/node_modules
+      - zsh-history:/zsh-volume
+      - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
     environment:
-      DATABASE_HOST: postgres
-      DATABASE_PORT: "5432"
-      DATABASE_USER: tutorial
-      DATABASE_PASSWORD: tutorial
-      DATABASE_NAME: hello_kysely
+      - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
+      - GH_TOKEN=${GH_TOKEN}
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
     depends_on:
       postgres:
         condition: service_healthy
@@ -36,3 +44,5 @@ services:
 
 volumes:
   pgdata:
+  zsh-history:
+    name: hello-kysely-zsh-history

@@ -1,0 +1,35 @@
+{
+  "name": "hello-kysely",
+  "version": "1.0.0",
+  "description": "Kysely + PostgreSQL tutorial: TODO list CRUD",
+  "type": "module",
+  "scripts": {
+    "clean": "npm run rmdir dist node_modules",
+    "cleandep": "npm run rmdir node_modules",
+    "lint": "eslint .",
+    "rmdir": "node -e \"var fs = require('fs'); try{process.argv.slice(1).map((fpath) => fs.rmdirSync(fpath, { recursive: true }))}catch(err){console.log(err)}; process.exit(0);\"",
+    "build": "tsc -b -v --listFiles",
+    "migrate": "node dist/src/migrate.js",
+    "demo:create": "node dist/src/demo-create.js",
+    "demo:read": "node dist/src/demo-read.js",
+    "demo:update": "node dist/src/demo-update.js",
+    "demo:delete": "node dist/src/demo-delete.js",
+    "demo:all": "node dist/src/demo-all.js"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "kysely": "^0.28.0",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.11.0",
+    "eslint": "^10.1.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.2",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.0"
+  }
+}

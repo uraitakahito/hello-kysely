@@ -4,10 +4,18 @@ Kysely + PostgreSQL で TODO リストの CRUD 操作を学ぶチュートリア
 
 ## セットアップ
 
-### PostgreSQL の起動
+### Development
+
+セットアップスクリプトを実行して、必要なファイルのダウンロードと `.env` の生成を行います:
 
 ```bash
-docker compose up -d postgres
+./setup.sh
+```
+
+### サービスの起動
+
+```bash
+docker compose up -d
 ```
 
 ### 依存パッケージのインストールとビルド

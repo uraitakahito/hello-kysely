@@ -4,16 +4,16 @@ Kysely + PostgreSQL で TODO リストの CRUD 操作を学ぶチュートリア
 
 ## セットアップ
 
-### Development
-
 ```bash
 ./setup.sh
 ```
 
+## Development
+
 ### サービスの起動
 
 ```bash
-docker compose up -d
+docker compose --profile dev up -d
 ```
 
 ### 依存パッケージのインストールとビルド
@@ -39,7 +39,7 @@ npm run migrate:down
 
 複数回実行すると、さらに前のマイグレーションも順番に巻き戻されます。
 
-## デモスクリプトの実行
+### デモスクリプトの実行
 
 各 CRUD 操作を個別に実行できます。
 
@@ -56,8 +56,24 @@ npm run demo:delete
 npm run demo:all
 ```
 
-## 停止
+### 停止
 
 ```bash
-docker compose down
+docker compose --profile dev down
+```
+
+## Production
+
+### ビルドと実行
+
+```bash
+docker compose --profile prod up --build
+```
+
+マイグレーション済みの PostgreSQL に対して `demo-all.js` を実行し、完了後にコンテナが終了します。
+
+### 停止
+
+```bash
+docker compose --profile prod down
 ```

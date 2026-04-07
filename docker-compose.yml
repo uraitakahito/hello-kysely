@@ -15,7 +15,7 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
+  dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -40,6 +40,24 @@ services:
         condition: service_healthy
     tty: true
     stdin_open: true
+    profiles:
+      - dev
+
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    profiles:
+      - prod
 
 volumes:
   pgdata:

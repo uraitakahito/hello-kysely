@@ -10,6 +10,7 @@
     "rmdir": "node -e \"var fs = require('fs'); try{process.argv.slice(1).map((fpath) => fs.rmdirSync(fpath, { recursive: true }))}catch(err){console.log(err)}; process.exit(0);\"",
     "build": "tsc -b -v --listFiles",
     "migrate": "node dist/src/migrate.js",
+    "migrate:down": "node dist/src/migrate-down.js",
     "demo:create": "node dist/src/demo-create.js",
     "demo:read": "node dist/src/demo-read.js",
     "demo:update": "node dist/src/demo-update.js",

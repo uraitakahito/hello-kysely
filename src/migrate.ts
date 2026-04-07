@@ -15,18 +15,23 @@ const migrator = new Migrator({
   }),
 });
 
-const { error, results } = await migrator.migrateToLatest();
+const direction = process.argv[2];
+
+const { error, results } =
+  direction === 'down'
+    ? await migrator.migrateDown()
+    : await migrator.migrateToLatest();
 
 for (const result of results ?? []) {
   if (result.status === 'Success') {
-    console.log(`Migration "${result.migrationName}" was executed successfully`);
+    console.log(`Migration "${result.migrationName}" was ${direction === 'down' ? 'reverted' : 'executed'} successfully`);
   } else if (result.status === 'Error') {
-    console.error(`Failed to execute migration "${result.migrationName}"`);
+    console.error(`Failed to ${direction === 'down' ? 'revert' : 'execute'} migration "${result.migrationName}"`);
   }
 }
 
 if (error) {
-  console.error('Failed to migrate');
+  console.error(`Failed to migrate${direction === 'down' ? ' down' : ''}`);
   console.error(error);
   process.exitCode = 1;
 }

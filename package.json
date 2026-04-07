@@ -18,7 +18,7 @@
     "demo:all": "node dist/src/demo-all.js"
   },
   "author": "",
-  "license": "Apache-2.0",
+  "license": "Unlicense",
   "dependencies": {
     "kysely": "^0.28.0",
     "pg": "^8.13.0"

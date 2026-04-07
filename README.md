@@ -44,10 +44,14 @@ npm run migrate:down
 各 CRUD 操作を個別に実行できます。
 
 ```bash
-npm run demo:create   # INSERT: TODO を追加
-npm run demo:read     # SELECT: TODO を取得
-npm run demo:update   # UPDATE: TODO を更新
-npm run demo:delete   # DELETE: TODO を削除
+# INSERT: TODO を追加
+npm run demo:create
+# SELECT: TODO を取得
+npm run demo:read
+# UPDATE: TODO を更新
+npm run demo:update
+# DELETE: TODO を削除
+npm run demo:delete
 ```
 
 全操作をまとめて実行する場合:

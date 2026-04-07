@@ -1,25 +1,111 @@
+// IMPORTANT: To use tsconfig.json, invoke tsc without input files.
 {
   "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    //
+    // Language and Environment
+    //
+
+    //
+    // Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
+    // Check `node_modules/typescript/lib/lib.*.d.ts` for available library declarations.
+    //
     "target": "ES2024",
-    "module": "ESNext",
+
+    //
+    // Specify a set of bundled library declaration files that describe the target runtime environment.
+    //
     "lib": ["ES2024"],
+
+    //
+    // Modules
+    //
+
+    //
+    // Specify what module code is generated.
+    // https://speakerdeck.com/uhyo/tsconfig-dot-jsonnoshe-ding-wojian-zhi-sou-hurontoendoxiang-ke-2024xia?slide=27
+    //
+    "module": "ESNext",
+
+    //
+    // Specify the root folder within your source files.
+    // If rootDir is not set, the build result will change depending on whether there are files with the .ts extension in the same folder as tsconfig.json.
+    // https://www.typescriptlang.org/tsconfig/#rootDir
+    //
     "rootDir": "./",
-    "outDir": "./dist",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "noEmitOnError": true,
-    "strict": true,
-    "exactOptionalPropertyTypes": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+
+    //
+    // Specify how TypeScript looks up a file from a given module specifier.
+    // https://speakerdeck.com/uhyo/tsconfig-dot-jsonnoshe-ding-wojian-zhi-sou-hurontoendoxiang-ke-2024xia
+    //
     "moduleResolution": "Bundler",
+
+    /* Emit */
+    // Generate .d.ts files from TypeScript and JavaScript files in your project.
+    "declaration": true,
+    // Create sourcemaps for d.ts files.
+    "declarationMap": true,
+    // Create source map files for emitted JavaScript files.
+    "sourceMap": true,
+    // Specify an output folder for all emitted files.
+    "outDir": "./dist",
+    // Disable emitting files if any type checking errors are reported.
+    "noEmitOnError": true,
+
+    /* Interop Constraints */
+
+    //
+    // Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility.
+    // https://www.typescriptlang.org/tsconfig/#esModuleInterop
+    //
     "esModuleInterop": true,
+
+    // Ensure that casing is correct in imports.
     "forceConsistentCasingInFileNames": true,
+
+    //
+    // TypeChecking
+    //
+    // strict:
+    // Enable all strict type-checking options.
+    // Turning this on is equivalent to enabling all of the strict mode family options, which are outlined below.
+    //
+    //   alwaysStrict:
+    //     Ensure 'use strict' is always emitted.
+    //   strictNullChecks:
+    //     When type checking, take into account 'null' and 'undefined'.
+    //   strictBindCallApply:
+    //     Check that the arguments for 'bind', 'call', and 'apply' methods match the original function.
+    //   strictFunctionTypes:
+    //     When assigning functions, check to ensure parameters and the return values are subtype-compatible.
+    //   strictPropertyInitialization:
+    //     Check for class properties that are declared but not set in the constructor.
+    //   noImplicitAny:
+    //     Enable error reporting for expressions and declarations with an implied 'any' type.
+    //   noImplicitThis:
+    //     Enable error reporting when 'this' is given the type 'any'.
+    //   useUnknownInCatchVariables:
+    //     Default catch clause variables as 'unknown' instead of 'any'.
+    // https://www.typescriptlang.org/tsconfig/#strict
+    //
+    "strict": true,
+
+    // Interpret optional property types as written, rather than adding 'undefined'.
+    "exactOptionalPropertyTypes": true,
+    // Enable error reporting when local variables aren't read.
+    "noUnusedLocals": true,
+    // Raise an error when a function parameter isn't read.
+    "noUnusedParameters": true,
+    // Enable error reporting for codepaths that do not explicitly return in a function.
+    "noImplicitReturns": true,
+    // Enable error reporting for fallthrough cases in switch statements.
+    "noFallthroughCasesInSwitch": true,
+    // Add 'undefined' to a type when accessed using an index.
     "noUncheckedIndexedAccess": true,
+    // Ensure overriding members in derived classes are marked with an override modifier.
     "noImplicitOverride": true,
+    // Enforces using indexed accessors for keys declared using an indexed type.
     "noPropertyAccessFromIndexSignature": true
   },
   "include": ["src/**/*"]
